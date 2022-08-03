@@ -5,7 +5,7 @@ import { IAuthorRepository } from "src/domain/interfaces/produto/repository";
 import { Author } from '../entities/author';
 
 @Injectable()
-export class AuthorRepositor implements IAuthorRepository {
+export class AuthorRepository implements IAuthorRepository {
   constructor(@InjectRepository(Author) private readonly author: Repository<Author>) {}
   
   findAll(): Promise<Author[]> {
