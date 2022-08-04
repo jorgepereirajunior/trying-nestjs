@@ -1,10 +1,10 @@
 import 'reflect-metadata';
 import 'dotenv/config';
 import { resolve } from 'path';
-import { DataSourceOptions } from 'typeorm';
+import { DataSource } from 'typeorm';
 
 const dir = resolve(__dirname, '..');
-export const dataSourceOptions: DataSourceOptions = {
+const dataSource = new DataSource({
   type: 'mssql',
   host: process.env.TYPEORM_HOST,
   port: Number(process.env.TYPEORM_PORT),
@@ -18,6 +18,6 @@ export const dataSourceOptions: DataSourceOptions = {
   options: {
     encrypt: false,
   },
-};
+});
 
-// export default dataSourceOptions;
+export default dataSource;

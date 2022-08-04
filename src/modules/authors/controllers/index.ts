@@ -1,34 +1,24 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { AuthorService } from '../useCases/authors.service';
-import { CreateAuthorDto } from './dto/create-author.dto';
-import { UpdateAuthorDto } from './dto/update-author.dto';
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { AuthorDTO } from 'src/domain/dtos';
+import { Author } from 'src/infra/database/entities/author';
+import { IAuthorController } from '../../../domain/interfaces/produto/controllers';
+import { CreateAuthorUseCase } from '../useCases/create';
+import { FindAuthorUseCase } from '../useCases/find';
 
-@Controller('authors')
-export class AuthorController {
-  constructor(private readonly authorsService: AuthorService) {}
-
-  @Post()
-  create(@Body() createAuthorDto: CreateAuthorDto) {
-    return this.authorsService.create(createAuthorDto);
-  }
+@Controller()
+export class AuthorController implements IAuthorController {
+  constructor(
+    private readonly findUseCase: FindAuthorUseCase,
+    private readonly createUseCase: CreateAuthorUseCase,
+  ) {}
 
   @Get()
-  findAll() {
-    return this.authorsService.findAll();
+  public getAll(): Promise<Author[]> {
+    return this.findUseCase.exec();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.authorsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateAuthorDto: UpdateAuthorDto) {
-    return this.authorsService.update(+id, updateAuthorDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.authorsService.remove(+id);
+  @Post()
+  public create(@Body() body: AuthorDTO): Promise<Author> {
+    return this.createUseCase.exec(body);
   }
 }
