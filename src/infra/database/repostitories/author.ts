@@ -16,7 +16,11 @@ export class AuthorRepository implements IAuthorRepository {
   }
 
   public findAll(): Promise<Author[]> {
-    return this.author.find();
+    return this.author.find({
+      relations: {
+        book: true,
+      },
+    });
   }
 
   public delete(id: string): Promise<DeleteResult> {
