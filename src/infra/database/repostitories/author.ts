@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { IAuthorRepository } from '../../../domain/interfaces/produto/repository';
 import { Author } from '../entities/author';
 import { AuthorDTO } from 'src/domain/dtos';
@@ -17,5 +17,13 @@ export class AuthorRepository implements IAuthorRepository {
 
   public findAll(): Promise<Author[]> {
     return this.author.find();
+  }
+
+  public delete(id: string): Promise<DeleteResult> {
+    return this.author.delete({ id });
+  }
+
+  update(id: string, body: AuthorDTO): Promise<UpdateResult> {
+    return this.author.update({ id }, body);
   }
 }
