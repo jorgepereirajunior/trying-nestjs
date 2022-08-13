@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 
 import { DeleteResult, UpdateResult } from 'typeorm';
@@ -36,8 +37,13 @@ export class AuthorController implements IAuthorController {
     return this.createUseCase.exec(body);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string): Promise<DeleteResult> {
+  // @Delete(':id')
+  // remove(@Param('id') id: string): Promise<DeleteResult> {
+  //   return this.deleteUseCase.exec(id);
+  // }
+
+  @Delete()
+  remove(@Query('id') id: string): Promise<DeleteResult> {
     return this.deleteUseCase.exec(id);
   }
 
