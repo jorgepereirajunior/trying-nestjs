@@ -10,7 +10,7 @@ import {
 
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { AuthorDTO } from '../../../domain/dtos';
-import { IAuthorController } from '../../../domain/interfaces/produto/controllers';
+import { IAuthorController } from '../../../domain/interfaces/author/controllers';
 import { Author } from '../../../infra/database/entities';
 import { CreateAuthorUseCase } from '../useCases/create';
 import { DeleteAuthorUseCase } from '../useCases/delete';

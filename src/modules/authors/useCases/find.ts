@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IFindAuthorUseCase } from '../../../domain/interfaces/produto/useCases';
+import { IFindAuthorUseCase } from '../../../domain/interfaces/author/useCases';
 import { Author } from '../../../infra/database/entities/author';
 import { AuthorRepository } from '../../../infra/database/repostitories/author';
 

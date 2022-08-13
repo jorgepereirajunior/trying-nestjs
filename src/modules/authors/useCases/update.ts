@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AuthorDTO } from 'src/domain/dtos';
-import { IUpdateAuthorUSeCase } from 'src/domain/interfaces/produto/useCases';
+import { IUpdateAuthorUSeCase } from 'src/domain/interfaces/author/useCases';
 import { AuthorRepository } from 'src/infra/database/repostitories';
 import { UpdateResult } from 'typeorm';
 

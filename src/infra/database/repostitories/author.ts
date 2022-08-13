@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { IAuthorRepository } from '../../../domain/interfaces/produto/repository';
+import { IAuthorRepository } from '../../../domain/interfaces/author/repository';
 import { Author } from '../entities/author';
 import { AuthorDTO } from 'src/domain/dtos';
 
