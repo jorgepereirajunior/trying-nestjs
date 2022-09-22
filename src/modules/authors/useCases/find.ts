@@ -8,8 +8,6 @@ export class FindAuthorUseCase implements IFindAuthorUseCase {
   constructor(private readonly repository: AuthorRepository) {}
 
   public async exec(): Promise<Author[]> {
-    const authors = await this.repository.findAll();
-
-    return authors;
+    return await this.repository.findAll();
   }
 }

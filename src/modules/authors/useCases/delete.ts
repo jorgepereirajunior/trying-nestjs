@@ -8,6 +8,6 @@ export class DeleteAuthorUseCase implements IDeleteAuthorUseCase {
   constructor(private readonly repository: AuthorRepository) {}
 
   public async exec(id: string): Promise<DeleteResult> {
-    return this.repository.delete(id).then();
+    return await this.repository.delete(id);
   }
 }
