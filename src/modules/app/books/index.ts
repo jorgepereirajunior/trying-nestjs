@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { RouteTree } from '@nestjs/core';
 
 import { InfraModule } from 'src/infra';
 import { BookController } from './controllers';
@@ -13,3 +14,8 @@ const useCases = Object.values(UseCases);
   providers: useCases,
 })
 export class BookModule {}
+
+export const bookPrefix: RouteTree = {
+  path: '/books',
+  module: BookModule,
+};

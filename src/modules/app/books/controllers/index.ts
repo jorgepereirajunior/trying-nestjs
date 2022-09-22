@@ -19,7 +19,7 @@ import {
   UpdateBookUseCase,
 } from '../useCases';
 
-@Controller('books')
+@Controller()
 export class BookController implements IBookController {
   constructor(
     private readonly findUseCase: FindBookUseCase,
