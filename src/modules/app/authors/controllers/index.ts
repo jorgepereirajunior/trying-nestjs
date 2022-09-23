@@ -27,7 +27,7 @@ export class AuthorController implements IAuthorController {
     private readonly updateUseCase: UpdateAuthorUseCase,
   ) {}
 
-  @Get()
+  @Get('all')
   public getAll(): Promise<Author[]> {
     return this.findUseCase.exec();
   }

@@ -28,7 +28,7 @@ export class BookController implements IBookController {
     private readonly deleteUseCase: DeleteBookUseCase,
   ) {}
 
-  @Get()
+  @Get('all')
   public getAll(): Promise<Book[]> {
     return this.findUseCase.exec();
   }
